@@ -1,0 +1,10 @@
+ALTER TABLE Task DROP FOREIGN KEY FKTask590830;
+DROP TABLE IF EXISTS Projet;
+DROP TABLE IF EXISTS Task;
+CREATE TABLE Projet (Id int(11) NOT NULL AUTO_INCREMENT, Titre varchar(255), DatDebut date, DateFin date, Description varchar(255), PRIMARY KEY (Id));
+CREATE TABLE Task (ID int(11) NOT NULL AUTO_INCREMENT, ProjetId int(11) NOT NULL, Nom varchar(255), Debut varchar(255), Fin varchar(255), PRIMARY KEY (ID));
+ALTER TABLE Task ADD INDEX FKTask590830 (ProjetId), ADD CONSTRAINT FKTask590830 FOREIGN KEY (ProjetId) REFERENCES Projet (Id);
+INSERT INTO Projet(Id, Titre, DatDebut, DateFin, Description) VALUES (1, 'Gestion de la bibliothèque', '2022-11-01', '2023-06-15', 'Projet de gestion de la bibliothèque scollaire du BTS de kénitra');
+INSERT INTO Projet(Id, Titre, DatDebut, DateFin, Description) VALUES (2, 'Gestion des évaluations', '2022-11-10', '2023-06-15', 'Projet de gestion des évaluation au sein du BTS de kénitra');
+INSERT INTO Task(ID, ProjetId, Nom, Debut, Fin) VALUES (1, 1, 'analyse', '2023-12-12', '2023-02-12');
+INSERT INTO Task(ID, ProjetId, Nom, Debut, Fin) VALUES (2, 1, 'conception', '2023-02-20', '2023-04-12');
